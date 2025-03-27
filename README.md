@@ -366,3 +366,8 @@ Verán que al usar un issue template, automáticamente se le asigna a todos los 
 
 Incluyan en la issue (pueden modificarla después de su creación) el link a un gist con algo de texto.
 
+## Entrega
+Para entregar el trabajo, presionar el botón `Merge Pull request` y luego `Confirm Merge`.
+Revisar que figure como correcto el merge y que al volver a la página principal del repositorio, figuren los cambios nuevos.
+Opcionalmente, pueden presionar el botón `delete branch` al final del PR una vez completado el merge, para limpiar el repositorio.
+
