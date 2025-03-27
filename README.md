@@ -59,54 +59,9 @@ Pasando el parámetro `--global` aplicamos la configuración para nuestro usuari
 
 :warning: En las computadoras de los laboratorios, pueden correr estos comandos sin la opción --global cuando estén parados dentro del clon de su repo (más adelante) para que no quede configurado su nombre y mail para el resto de los estudiantes que usen la PC.
 
-<h2 id="classroom">Inscribiendose al classroom</h2>
-Utilizaremos [Github Classrooms](https://classroom.github.com/classrooms) para los trabajos prácticos de la materia. 
-
-<h2 id="forking">Forkeando el repo</h2>
-
-Vamos a darles dos repos con los con los enunciados y los archivos necesarios para el desarrollo de las actividades. Un repositorio destinado a trabajos individuales y parciales, este que están viendo ahora, y otro para los trabajos prácticos grupales. La idea es que ustedes hagan copias propias de estos repositorios sobre las que puedan trabajar libremente, a eso le llamamos "hacer un fork" del repositorio original. Luego, a medida que vayamos publicando TPs/parciales, les iremos avisando para que actualicen sus repositorios con lo publicado en dichos repositorios originales.
-
-En principio, para hacer un fork: 
-
-1. Presionamos el botón que se indica en la siguiente imagen:
-
-![Botón de Fork](img/fork1.png)
-
-2. Seleccionamos el _namespace_ al que pertenecerá el proyecto (a criterio de ustedes) y esperamos a que finalice, luego de lo cual ya tienen su propio repositorio sobre el cual trabajar.
-
-3. :exclamation: <ins>Revisamos que el nuevo repositorio sea **privado**</ins>
-
-![Configurar como privado](img/Settings_private.png)
-
-4. :exclamation: <ins>Y añadimos a todos los docentes como miembros con rol **Developer**</ins>
-
-![Configurar miembros](img/members.png)
-
-Los usuarios a agregar son:
-
-- emarchi
-- bventrici
-- fdemartino
-- gzuker
-- iglosiggio
-- imaqueda
-- jszabo
-- mpiaggio
-- mcervetto
-- nromero
-- sruberto
-- afernandezortuzar
-- kgoldsmit
-
-5. Una vez agregados los docentes, consultamos con el siguiente comando al OrgaBot en Discord para asegurarnos de que los docentes tienen acceso a nuestro repo y que todo fue configurado todo correctamente.
-
-![Configurar miembros](img/comando_repotest.png)
-
-> :warning: De no configurar el repositorio como privado y agregar a todos los docentes como **developers**, no podremos responder sus consultas ni registrar sus entregas como válidas
-
 <h2 id="cloning">Clonando el repo</h2>
 
-Para continuar, si todavía no lo hicieron, es necesario que clonen el repositorio actual a su PC. De esta manera, podrán trabajar localmente sobre el repositorio e ir enviando los cambios al repositorio remoto (en este caso alojado en **git.exactas.uba.ar**), a medida que lo crean necesario.
+Con git instalado podemos clonar el repositorio del TP a su PC. De esta manera, podrán trabajar localmente sobre el repositorio local e ir sincronizando los cambios al repositorio remoto (en este caso alojado en **github.com**), a medida que lo crean necesario.
 
 Hay tres formas de clonar un repositorio:
 
@@ -114,27 +69,62 @@ Hay tres formas de clonar un repositorio:
 - Por SSH
 - Por Github CLI
 
-Si clonamos utilizando la primera opción, tendremos que autenticarnos con usuario y contraseña cada vez que hagamos alguna operación con el servidor remoto desde nuestra PC. Esto se torna molesto rápidamente. Nuestras recomendaciones son las siguientes:
+Si clonamos utilizando la primera opción, tendremos que autenticarnos con usuario y Personal Access Token (su configuración se explica en el próximo apartado) cada vez que hagamos alguna operación con el servidor remoto desde nuestra PC. Esta es la opción más segura en computadoras compartidas, pero se torna molesta rápidamente. Nuestras recomendaciones son las siguientes:
 
 - **En su computadora personal**, configurar un acceso por _SSH_ que creemos es lo más sencillo y cómodo (existen otras opciones como configurar un administrador de credenciales). Para configurar una clave ssh pueden seguir los pasos que están en el siguiente [link](https://git.exactas.uba.ar/help/ssh/README). Los pasos claves son "Generate an SSH key pair" y "Add an SSH key to your GitLab account". 
-- **En las computadoras de los laboratorios**, donde varias personas utilizan el mismo usuario y posiblemente ustedes cambien de computadoras entre clases, recomendamos configurar acceso mediante HTTPS. Si realmente desean utilizar SSH es posible [configurar múltiples claves](https://stackoverflow.com/questions/2419566/best-way-to-use-multiple-ssh-private-keys-on-one-client/38454037#38454037) para el mismo sitio, pero tengan en cuenta que tendrán que hacerlo en cada computadora que quieran usar, y que deben asociar una contraseña a la clave para evitar que otros usuarios realicen operaciones en su nombre.
+- **En las computadoras de los laboratorios**, donde varias personas utilizan el mismo usuario y posiblemente ustedes cambien de computadoras entre clases, recomendamos configurar acceso mediante HTTPS. Si realmente desean utilizar SSH es posible [configurar múltiples claves](https://stackoverflow.com/questions/2419566/best-way-to-use-multiple-ssh-private-keys-on-one-client/38454037#38454037) para el mismo sitio, pero tengan en cuenta que tendrán que hacerlo en cada computadora que quieran usar, y que **deben** asociar una contraseña a la clave para evitar que otros usuarios realicen operaciones en su nombre.
 
-Una vez configurada nuestra clave ssh (se puede [probar](https://git.exactas.uba.ar/help/ssh/README#verify-that-you-can-connect)!) vamos a usar la dirección del dropdown `clone` que comienza con **git@git.exactas.uba.ar** para clonar el repositorio:
+### Configurando acceso HTTPS
+
+Para acceder mediante HTTPS a github es necesario crear un Personal Access Token (PAT), que funcionan como contraseñas temporales, con vencimiento y scope más reducido que una contraseña (podemos darle permiso solo de lectura al PAT, por ejemplo).
+
+Para crearlo debemos ingresar a las preferencias de github e ir a la última opción del menú: [`Developer Settings` (Configuraciones de desarrollo)](https://github.com/settings/apps).
+
+En la página de configuraciones de desarrollo, seleccionamos el menú de Personal access tokens, submenú `Tokens (classic)`.
+
+Nos aparecerá un botón para generar un nuevo token, `Generate new token` que abrirá un desplegable. **Recomendamos elegir `Generate new token (classic)`** ya que es considerablemente más sencillo de configurar.
+
+![Página de developer settings, con la opción Tokens (classic) en el submenu Personal Access Tokens resaltada. En el área central de la pantalla se resalta Generate new token y del desplegable resultante, Generate new token (classic)](img/PAT_classic.png)
+
+En la página resultante, basta con seleccionar el scope `repo`.
+Pueden colocar la nota que deseen como "nombre" del PAT.
+Para mayor seguridad, pueden dar una expiración de un día al PAT de manera que su vencimiento sea cercano al fin de la clase. De todos modos, github no debería estar guardando su PAT en la computadora en ningún momento. Además **pueden revocar los PAT generados en cualquier momento**. Si por algún motivo creen que su access token fue comprometido, podrán darlo de baja en esta misma página.
+
+Terminadas las configuraciones, seleccionamos `Generate token` para generar el PAT.
+
+**:warning: sólo se mostrará el PAT generado una vez**
+así que este es el momento de guardarlo en algún lugar accesible pero seguro.
+
+![alt text](img/PAT_permisos.png)
+
+Creado el PAT, nos figurará en la página anterior
+
+![alt text](img/PAT_creado.png)
+
+Y ahora podemos clonar el repositorio desde la línea de comandos.
+
+### Clonando el repositorio
+
+Una vez configurado nuestro PAT o clave ssh (se puede [probar la clave ssh](https://git.exactas.uba.ar/help/ssh/README#verify-that-you-can-connect)!) vamos a usar la dirección del dropdown `clone` correspondiente al tipo de acceso que elegimos. Por ejemplo, si estamos usando SSH, usaremos la dirección que comienza con **git@git.exactas.uba.ar** para clonar el repositorio:
 
 ![Dirección SSH del repo](img/clone-with-ssh.png)
 
-Por ejemplo para clonar el repo con dirección SSH: **git@git.exactas.uba.ar:ejemplo/individual-2c2024.git**, hacemos `cd` al directorio en el cual querramos guardar el repositorio en nuestro filesystem y ejecutamos
+Si quisieramos clonar un repositorio con dirección SSH: **git@git.exactas.uba.ar:ejemplo/tp-git**: abrimos una terminal, hacemos `cd` al directorio en el cual querramos guardar la copia local del repositorio y ejecutamos
 
 ```shell
-$ git clone git@git.exactas.uba.ar:ejemplo/individual-2c2024.git
+$ git clone git@git.exactas.uba.ar:ejemplo/tp-git
 ```
 
-De elegir usar HTTPS, corremos el mismo comando reemplazando la dirección ssh por la dirección HTTPS del dropdown `clone` (en este caso sería `https://git.exactas.uba.ar/ejemplo/individual-2c2024.git`).
+Al usar ssh, la autenticación es automática.
+
+De elegir usar HTTPS, corremos el mismo comando reemplazando la dirección ssh por la dirección HTTPS del dropdown `clone` (en este caso sería `https://git.exactas.uba.ar/ejemplo/tp-git`).
+
+En ese caso se nos solicitará ingresar el usuario (presionar enter) y contraseña (en este momento se puede pegar el PAT a la terminal presionando `ctrl + shift + v` - NO se imprimirá en pantalla la contraseña, hay que confiar y presionar enter e intentar de nuevo si no funcionó).
 
 Si todo salió bien, deberíamos ver algo parecido a lo siguiente:
 
 ```shell
-Cloning into 'individual-2c2024'...
+Cloning into 'tp-git'...
 remote: Enumerating objects: 24, done.
 remote: Counting objects: 100% (24/24), done.
 remote: Compressing objects: 100% (19/19), done.
@@ -142,7 +132,7 @@ remote: Total 24 (delta 0), reused 24 (delta 0), pack-reused 0
 Receiving objects: 100% (24/24), 303.16 KiB | 192.00 KiB/s, done.
 ```
 
-y aparecerá un subdirectorio **individual-2c2024**.
+y aparecerá un subdirectorio **tp-git**.
 
 Les recomendamos usar el editor de texto VSCode [vscode](https://code.visualstudio.com/) en el que pueden descargar las siguientes dos extensiones que son utiles para manejar repositorios de git:
 
@@ -200,82 +190,163 @@ Procuren siempre realizar un `pull` del repositorio antes de sentarse a trabajar
 - [Demo interactiva](https://learngitbranching.js.org/)
 - [Otra demo interactiva](https://onlywei.github.io/explain-git-with-d3/)
 
+## Ejercicio 1: Crear una branch
+
+### Branches (ramas)
+En GitHub contamos con **branches (ramas)**, que son una versión paralela del repositorio, para tener separado el trabajo que no está listo para incluir en el proyecto finalizado (ya sea porque esta en construcción o porque estamos haciendo experimentos que no queremos queden reflejados).
+En general, se intenta que el trabajo presente en la rama principal `main` sea código funcional, y que cada _feature_ que vamos encarando (o bug que vamos a arreglar) lo trabajemos en una branch que no será ''aplicada'' a main hasta que el feature no esté en un estado funcional.
+De esta manera, evitamos afectar el proyecto principal con desarrollos a medio terminar.
+
+En la materia trabajaremos en una (o más!) branches, y para entregar les pediremos que hagan un Pull Request + Merge a la branch `main`. 
+
+Para aprender más sobre branches, pueden leer ["Acerca de las Ramas (branches)"](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches) en la documentación oficial de Github.
+
+### Ejercicio
+Comencemos creando una branch. Esto se puede hacer tanto desde el repositorio local con el comando `git checkout -b my-first-branch`, que creara una branch llamada "my-first-branch", como desde la interfaz web del siguiente modo:
+
+1. Pararse en la pestaña inicial **<> Code**
+
+    ![alt text](img/create-branch.png)
+
+2. Elegir **main** en el drop-down, colocar el nombre de la nueva branch (en la foto, `my-first-branch`) y presionar el botón para crear la nueva branch.
+ 
+    ![alt text](img/name-branch.png)
+
+## Ejercicio 2: Modificar un archivo y crear un commit
+
+Ahora introduciremos una modificación en nuestra branch y crearemos un commit con los nuevos cambios.
+Un **commit** es un conjunto de cambios a archivos y carpetas en el proyecto, que vive en una branch. Pueden ver más información en ["Acerca de las confirmaciones (commits)"](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/about-commits) en la documentación de Github.
+
+Si no lo hicieron aún, este es el momento de [clonar el repositorio](#clonando-el-repositorio) localmente.
+
+Una vez clonado el repositorio, ejecuten el comando `git switch my-first-branch` (reemplazando por el nombre que hayan usado para su branch) para pararse en la versión del repositorio correspondiente a la nueva branch.
+
+Pueden verificar encontrarse en la branch correcta ejecutando el comando `git branch`. Debería mostrar algo como lo siguiente:
+```sh
+$ git branch
+main
+* tpGit
+```
+> [!WARNING]
+> Si al hacer `git branch` o al hacer el `git switch` no les aparece el nombre de su branch nueva, es posible que tengan que correr el comando `git pull` para sincronizar su repositorio local con el repositorio remoto. Esto ocurre si clonamos el repositorio antes de crear la branch, y creamos la branch en la interfaz web - necesitamos sincronizar repositorios remoto y local.
+
+Cuando ya esten parados en la branch nueva, vayan a la carpeta donde está nuestro repositorio y completen el archivo `presentacion.md` con su nombre y un poco de información sobre ustedes. No se olviden de guardar!
+
+> [!NOTE] 
+> Los archivos .md contienen markdown de Github. Esto es lo que nos permite mostrar imágenes y formato bello en la interfaz web de github. Siéntanse libres de experimentar con Markdown en su archivo de presentación! Pueden encontrar [la documentación aquí](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
+Hechos los cambios pertinentes, debemos realizar un commit para versionar los cambios.
+Para ello:
+1. Añadimos los archivos con cambios a versionar al commit con el comando `git add presentacion.md` (también podemos usar `git add .` para agregar todos los archivos con cambios en la carpeta actual, identificada por `.`, al commit) 
+2. Fijamos el commit con el comando `git commit -m "Completo presentacion.md"`. Se puede usar otros mensajes completando una frase distinta (entre comillas) luego de la flag `-m`.
+3. Finalmente, **subimos el cambio al repositorio remoto** con el comando `git push`.
+
+Si ahora ingresan a la página web de su repositorio, y navegan a la branch nueva (mismo panel donde crearon la branch anteriormente) deberíán poder ver su nuevo commit.
+
+![alt text](img/commit-web.png)
+
+## Ejercicio 3: crear un Pull Request con los cambios y mergear a main
+### Pull requests
+
+Al trabajar con branches, utilizamos Pull Requests para informar al resto de los usuarios del repositorio de los cambios que queremos realizar, y pedir sus comentarios sobre los cambios hechos.
+En una pull request se pueden charlar los cambios y discutir posibles mejoras con otros colaboradores.
+También se puede continuar agregando cambios a la branch asociada al Pull Request, y estos quedarán registrados en él.
+
+Creemos un Pull Request para nuestra nueva branch.
+Esto se realiza desde la interfaz web de github.
+Vamos a la pestaña **Pull requests** y presionemos el botón **New pull request** (si les aparece un cartel indicando que su branch tuvo cambios recientemente, pueden utilizar el botón de dicho banner también!)
+
+![New pr](img/new-pr.png)
+
+Vamos a seleccionar como base (el lugar a donde queremos enviar los cambios) `main`, y como punto de comparación (el lugar donde están los nuevos cambios) `my-first-branch`.
+
+![Compare sources](img/compare.png)
+
+Una vez que revisemos los cambios introducidos por la nueva branch y veamos todo en orden, podemos presionar `Create pull request`.
+
+Ahora nombramos nuestra Pull Request `Entrega TP Git` y añadimos una descripción pertinente (no hay ningún requisito particular para este TP).
+
+Las Pull Request permiten agregar personas específicas como _reviewers_, para mostrar que queremos su feedback específico.
+Procederemos a crear una pull request para nuestra branch y agregar como reviewer a uno de los docentes de la materia.
+
+Para saber qué docente está asignado como reviewer a su TP, contamos con el siguiente sistema de avanzada:
+
+Si el primer número de su Libreta Universitaria (entes del /) termina en:
+1. Asignar a @afernandezortuzar como reviewer
+2. Asignar a @brunocompu
+3. @franciscod
+4. @gasparzuker
+5. @jorgecszabo
+6. @makobot-sh
+7. @npache
+8. @pugliesee
+9. @stefmr
+10. (Si el número termina en 0) @TomasDeLosSantos
+
+Hecho todo esto, podemos **Crear la Pull Request** con el botón verde que se encuentra debajo de la caja de descripción.
+
+Para leer más sobre Pull Requests, pueden consultar ["Acerca de las solicitudes de incorporación de cambios (Pull Requests)".](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) en la documentación de Github.
 
 ## Como hacer consultas de TP
 
-Durante la cursada, manejaremos las consultas que sean específicas de un tp y su implementación mediante issues de gitlab. 
-Para ello vamos a utilizar templates predefinidos que nos van a ayudar a organizarnos. 
-Es importante que usen y respeten el **esquema de los templates**, están diseñados para que los docentes tardemos el menor tiempo posible en identificar el problema y ayudarlos. 
-Idealmente, muchas de sus dudas las van a resolver por su cuenta en el proceso de definir bien la consulta.
+Durante la cursada, manejaremos las consultas que sean específicas de un tp y su implementación mediante el canal público de consultas del servidor de discord, junto con el issue tracker de github.
+
+### Foro de consultas en discord
+
+En el servidor de discord contamos con una sección `Foros de consulta` con foros públicos para consultas administrativas no privadas y consultas específicas de C, asm-x86, simd y system-programming.
+Para consultas administrativas de carácter privado pueden contactarnos a `orga-doc@dc.uba.ar`.
+
+Los foros de consultas están pensados para consultas **puntuales**, o que por algún motivo no hayan podido ser respondidas en los laboratorios.
+Consultas del tipo "Este ejercicio de la guía no me funciona y no sé por qué" serán derivadas a los espacios de laboratorio dondre tendremos un espacio menos acotado para encararlas.
+Sin embargo, para poder destrabarse, pueden enviar al canal de consultas el comportamiento específico que están enfrentando y les daremos recomendaciones de cómo encontrar el problema y encararlo.
+De esta manera, el resto de los estudiantes también podrán aprovechar la consulta.
+
+Para realizar una consulta:
+1. Seleccionar el foro correspondiente
+2. **Utilizar el buscador de discord** para revisar si no se respondieron ya preguntas similares
+3. Crear una nueva publicación con un título descriptivo (de ser relevante incluir número de guía o TP y ejercicio)
+4. Describir la consulta, teniendo cuidado de no dar soluciones a los trabajos prácticos ya que el canal es público
+    - Si la consulta requiere como contexto parte de la implementación de un ejercicio del TP, incluir los detalles privados en un link a la linea de código de github o un link a una **issue de github** (detalles más abajo). 
+
+### Issue tracker en github
+
+Para asistir con el uso del issue tracker de git, contamos con templates predefinidos que nos van a ayudar a organizarnos y les darán una guía de qué información necesitan los docentes para responder su consulta lo más rápido posible.
+Incluso es posible que resuelvan algunas dudas por su cuenta en el proceso de completar el template.
+
+Para crear una issue en su repositorio de github:
 
 1. **En su propio fork** del repositorio del TP navegar a la sección `Issues`
 2. Presionar el botón `New issue`
 
-![New Issue](img/new-issue.png)
+![New issue](img/new-issue.png)
 
-3. Completar un título, elegir el type "issue"
-4. En el campo `description` **elegir el template correspondiente** al tipo de consulta a realizar
-   > :warning: Issues que no respeten alguno de los formatos de template dados no serán respondidas
-   >
+1. En el popup elegir un tipo de issue template
+2. En el campo `description` **elegir el template correspondiente** al tipo de consulta a realizar
    > Completar los campos marcados con `[COMPLETAR]`
 
-![Issue Template](img/issue-template.png)
+![alt text](img/fill-issue.png)
 
-5. Una vez completado el template utilizar el botón `preview` para revisar que la consulta se esté generando correctamente.
-   > :warning: Pueden encontrar una consulta de ejemplo en https://gitlab.exactas.uba.ar/ayoc-doc/individual-2c2024/-/issues/1
-6. Opcionalmente, pueden asignarle a la issue una `Label` con el mismo nombre que el template elegido. Deberán crear la project label correspondiente.
-7. Presionar botón `Create issue`
+1. Una vez completado el template utilizar el botón `Preview` para revisar que la consulta se esté generando correctamente.
+2. Presionar botón `Create`
 
-![Create Issue](img/create-issue.png)
+## Gists
 
-## Snippets
-
-Para evitar pegar enormes logs de debuggeo en la issue, que dificultarían su lectura, vamos a compartir los logs como archivos separados mediante *snippets* de Gitlab.
-Un _snippet_ funciona como un pequeño repositorio con funcionalidad mínima para pocos archivos sueltos, con _syntax highlighting_.
+Para evitar pegar enormes logs de debuggeo en la issue, que dificultarían su lectura, vamos a compartir los logs como archivos separados mediante *gists* de Gitlab.
+Un _gist_ funciona como un pequeño repositorio con funcionalidad mínima para pocos archivos sueltos, con _syntax highlighting_.
 Está pensado para compartir código rápidamente sin necesidad de crear un repositorio completo nuevo.
 
-> :warning: Pueden encontrar un snippet de ejemplo en la consulta de ejemplo de https://gitlab.exactas.uba.ar/ayoc-doc/individual-2c2024/-/issues/1
-
-Para compartir logs o código mediante snippets:
+Para compartir logs o código mediante gists:
 1. Presionar el botón `+` al costado de la barra de búsqueda superior
-2. Seleccionar la opción `new snippet`
-    ![Botón + en la barra superior de gitlab](img/new_snippet.png)
-3. Completar título y contenido del snippet, presionando el botón `Add another file` si queremos agregar más de un archivo
+2. Seleccionar la opción `new gist`
+    ![Botón + en la barra superior de gitlab](img/new-gist.png)
+3. Completar título y contenido del gist, presionando el botón `Add another file` si queremos agregar más de un archivo.
     ![Snippet de gitlab completado](img/fill_snippet.png)
-4. Elegir el nivel de visibilidad `internal` (de elegir privado nadie más podrá ver el snippet, ya que no hay control granular sobre snippets)
-5. Presionar el botón `Create snippet`
-    ![Nivel de privacidad y crear snippet](img/create_snippet.png)
+4. Elegir `Create secret gist` para que el gist no sea público, pero pueda ser accedido por aquellos que tengan el link.
+5. Presionar el botón `Create gist`
+    ![Nivel de privacidad y crear snippet](img/create-gist.png)
 
-## Un poco de C
+## Ejercicio 4 (opcional): ejercitar issues y gists
+Como ejercicio opcional, les proponemos que creen una issue en su repositorio con alguno de los templates provistos por la cátedra (no es necesario que lo completen con información real).
+Verán que al usar un issue template, automáticamente se le asigna a todos los docentes de la cátedra!
 
-Vamos a hacer uso de algunos de los conceptos vistos durante esta primer clase. En la carpeta _src_ van a encontrar unos cuantos archivos:
-
-- `ej1.h`: contiene las declaraciones de variables y funciones a ser definidas en ej1.c.
-- `ej1.c`: contiene las definiciones de las variables y funciones declaradas en ej1.h, algunas de las cuales deberán completar (ver enunciado más adelante).
-- `main.c`: acá pueden definir sus propias pruebas, recuerden que todo programa en C comienza su ejecución llamando a la funcion _main_.
-- `test.c`: contiene un caso de prueba. No se supone que lo modifiquen, pueden inspirarse en sus contenidos para realizar sus propias pruebas.
-- `Makefile`: contiene las definiciones de **comandos de compilación**, para no tener que escribir el comando completo cada vez que se quiera compilar. Se invocan escribiendo **make** seguido de la etiqueta correspondiente (ej: `make all`, `make main`, `make test`).
-- `runMain.sh`: script que compila y corre con valgrind su solución a partir de main.c.
-- `runTester.sh` script que compila y corre con valgrind su solución a partir de test.c, comparando la salida producida con la salida esperada.
-- `salida.catedra.txt`: archivo de salida generado por nuestra solución, contra el que se comparará el archivo que genere su solución al correr el archivo runTester.sh.
-
-## Enunciado
-
-OrgaLibre es una tienda online de componentes de PC que vende a precios muy bajos. Como quieren asegurarse de que sus clientes les vayan a dar buen uso a lo que compren, envían el catálogo de productos de una forma muy particular.
-
-El catálogo se representa como un array de enteros de 32 bits donde cada par de elementos consecutivos almacena los datos de dos productos distintos de la siguiente forma:
-
-![Esquema del catálogo](img/esquema-catalogo.png)
-
-Entero 1: ID1 (8 bits), ID2 (8 bits), Precio1 (12 bits), Moneda1 (1 bit), Precio2 (bits 11 a 9)
-
-Entero 2: Precio2 (bits 8 a 0), Moneda2 (1 bit), Stock1 (11 bits), Stock2 (11 bits)
-
-Se pide:
-1. Implementar las funciones `imprimir_producto` y `procesar_e_imprimir_catalogo` para ayudar a leer el catálogo cómodamente. Sus definiciones y detalles los van a encontrar en `ej1.h`
-2. Una vez que finalicen la implementación, pushearla a su repo y **abrir un issue** con el template "Ayuda con bug". Incluir en la sección "Salida de tests" un link a un snippet con la salida por consola de `runTester.sh`. 
-3. Completar este [formulario](https://docs.google.com/forms/d/e/1FAIpQLSe0It9atI0WyikeAlsbo6crDyVSh18cCNoo8m0aAUQ8Q0ws3w/viewform?usp=sf_link) para informar el repositorio individual y registrar la entrega del tp.
-
-
-
-
+Incluyan en la issue (pueden modificarla después de su creación) el link a un gist con algo de texto.
