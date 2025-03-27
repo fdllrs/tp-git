@@ -25,13 +25,24 @@ Debido a su popularidad, se dispone de una cantidad enorme de tutoriales y guía
 
 Supondremos a lo largo del taller una instalación de Linux, de tipo Ubuntu/Debian. Si instalaste alguna distribución basado en otro sistema (Arch, Fedora), entonces entendemos que _sabes de qué va la cosa_. Si sos usuario/a de Windows, existe una herramienta llamada WSL que nos permite contar con una instalación y consola de Linux que pueden utilizar para los trabajos de la materia, les dejamos un link con instrucciones básicas de instalación y uso: https://learn.microsoft.com/es-es/windows/wsl/install. Desde la materia les recomendamos fuertemente tomar la oportunidad para procurar una instalación de Linux; pueden acercarse durante los laboratorios si tienen algún problema creando el dual boot.
 
-El listado de temas que vamos a explorar abarca los siguientes:
+La estructura de este trabajo práctico es la siguiente:
 
-- [Instalación y configuración](#installation)
-- [Forkeando el repo](#forking)
-- [Clonando el repo](#cloning)
-- [Aplicar cambios locales al repositorio remoto](#push)
-- [Referencias](#ref)
+- [Trabajo Práctico 0 - Git](#trabajo-práctico-0---git)
+  - [Introducción](#introducción)
+    - [Configurando acceso HTTPS](#configurando-acceso-https)
+    - [Clonando el repositorio](#clonando-el-repositorio)
+  - [Ejercicio 1: Crear una branch](#ejercicio-1-crear-una-branch)
+    - [Branches (ramas)](#branches-ramas)
+    - [Ejercicio](#ejercicio)
+  - [Ejercicio 2: Modificar un archivo y crear un commit](#ejercicio-2-modificar-un-archivo-y-crear-un-commit)
+  - [Ejercicio 3: crear un Pull Request con los cambios y mergear a main](#ejercicio-3-crear-un-pull-request-con-los-cambios-y-mergear-a-main)
+    - [Pull requests](#pull-requests)
+  - [Como hacer consultas de TP](#como-hacer-consultas-de-tp)
+    - [Foro de consultas en discord](#foro-de-consultas-en-discord)
+    - [Issue tracker en github](#issue-tracker-en-github)
+  - [Gists](#gists)
+  - [Ejercicio 4 (opcional): ejercitar issues y gists](#ejercicio-4-opcional-ejercitar-issues-y-gists)
+
 
 <h2 id="installation">Instalación y configuración</h2>
 
