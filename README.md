@@ -273,7 +273,7 @@ Procederemos a crear una pull request para nuestra branch y agregar como reviewe
 
 Para saber qué docente está asignado como reviewer a su TP, contamos con el siguiente sistema de avanzada:
 
-Si el primer número de su Libreta Universitaria (entes del /) termina en:
+Si el último número de su Libreta Universitaria (el número a la izquierda del `/`) termina en:
 1. Asignar a @afernandezortuzar como reviewer
 2. Asignar a @brunocompu
 3. @franciscod
@@ -285,7 +285,7 @@ Si el primer número de su Libreta Universitaria (entes del /) termina en:
 9. @stefmr
 10. (Si el número termina en 0) @TomasDeLosSantos
 
-(Sí, algunos docentes zafaron de la corrección del parcial en esta ocasión :laughing:)
+(Sí, algunos docentes zafaron de la corrección del TP en esta ocasión :laughing:)
 
 Hecho todo esto, podemos **Crear la Pull Request** con el botón verde que se encuentra debajo de la caja de descripción.
 
