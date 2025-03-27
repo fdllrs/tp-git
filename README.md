@@ -283,6 +283,8 @@ Si el primer número de su Libreta Universitaria (entes del /) termina en:
 9. @stefmr
 10. (Si el número termina en 0) @TomasDeLosSantos
 
+(Sí, algunos docentes zafaron de la corrección del parcial en esta ocasión :laughing:)
+
 Hecho todo esto, podemos **Crear la Pull Request** con el botón verde que se encuentra debajo de la caja de descripción.
 
 Para leer más sobre Pull Requests, pueden consultar ["Acerca de las solicitudes de incorporación de cambios (Pull Requests)".](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) en la documentación de Github.
@@ -350,3 +352,4 @@ Como ejercicio opcional, les proponemos que creen una issue en su repositorio co
 Verán que al usar un issue template, automáticamente se le asigna a todos los docentes de la cátedra!
 
 Incluyan en la issue (pueden modificarla después de su creación) el link a un gist con algo de texto.
+
