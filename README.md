@@ -66,13 +66,13 @@ Con git instalado podemos clonar el repositorio del TP a su PC. De esta manera, 
 
 Hay tres formas de clonar un repositorio:
 
-- Utilizando la url que comienza con *https://git.exactas.uba.ar/*
+- Utilizando la url que comienza con *https://github.com/*
 - Por SSH
 - Por Github CLI
 
 Si clonamos utilizando la primera opción, tendremos que autenticarnos con usuario y Personal Access Token (su configuración se explica en el próximo apartado) cada vez que hagamos alguna operación con el servidor remoto desde nuestra PC. Esta es la opción más segura en computadoras compartidas, pero se torna molesta rápidamente. Nuestras recomendaciones son las siguientes:
 
-- **En su computadora personal**, configurar un acceso por _SSH_ que creemos es lo más sencillo y cómodo (existen otras opciones como configurar un administrador de credenciales). Para configurar una clave ssh pueden seguir los pasos que están en el siguiente [link](https://git.exactas.uba.ar/help/ssh/README). Los pasos claves son "Generate an SSH key pair" y "Add an SSH key to your GitLab account". 
+- **En su computadora personal**, configurar un acceso por _SSH_ que creemos es lo más sencillo y cómodo (existen otras opciones como configurar un administrador de credenciales). Para configurar una clave ssh pueden seguir los pasos que están en el siguiente [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh). Los pasos claves son "Generate an SSH key pair" y "Add an SSH key to your GitLab account". 
 - **En las computadoras de los laboratorios**, donde varias personas utilizan el mismo usuario y posiblemente ustedes cambien de computadoras entre clases, recomendamos configurar acceso mediante HTTPS. Si realmente desean utilizar SSH es posible [configurar múltiples claves](https://stackoverflow.com/questions/2419566/best-way-to-use-multiple-ssh-private-keys-on-one-client/38454037#38454037) para el mismo sitio, pero tengan en cuenta que tendrán que hacerlo en cada computadora que quieran usar, y que **deben** asociar una contraseña a la clave para evitar que otros usuarios realicen operaciones en su nombre.
 
 ### Configurando acceso HTTPS
@@ -107,19 +107,19 @@ Y ahora podemos clonar el repositorio desde la línea de comandos.
 
 ### Clonando el repositorio
 
-Una vez configurado nuestro PAT o clave ssh (se puede [probar la clave ssh](https://git.exactas.uba.ar/help/ssh/README#verify-that-you-can-connect)!) vamos a usar la dirección del dropdown `clone` correspondiente al tipo de acceso que elegimos. Por ejemplo, si estamos usando SSH, usaremos la dirección que comienza con **git@git.exactas.uba.ar** para clonar el repositorio:
+Una vez configurado nuestro PAT o clave ssh (se puede [probar la clave ssh](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)!) vamos a usar la dirección del dropdown `clone` correspondiente al tipo de acceso que elegimos. Por ejemplo, si estamos usando SSH, usaremos la dirección que comienza con **git@github.com** para clonar el repositorio:
 
 ![Dirección SSH del repo](img/clone-with-ssh.png)
 
-Si quisieramos clonar un repositorio con dirección SSH: **git@git.exactas.uba.ar:ejemplo/tp-git**: abrimos una terminal, hacemos `cd` al directorio en el cual querramos guardar la copia local del repositorio y ejecutamos
+Si quisieramos clonar un repositorio con dirección SSH: **git@github.com:ejemplo/tp-git**: abrimos una terminal, hacemos `cd` al directorio en el cual querramos guardar la copia local del repositorio y ejecutamos
 
 ```shell
-$ git clone git@git.exactas.uba.ar:ejemplo/tp-git
+$ git clone git@github.com:ejemplo/tp-git
 ```
 
 Al usar ssh, la autenticación es automática.
 
-De elegir usar HTTPS, corremos el mismo comando reemplazando la dirección ssh por la dirección HTTPS del dropdown `clone` (en este caso sería `https://git.exactas.uba.ar/ejemplo/tp-git`).
+De elegir usar HTTPS, corremos el mismo comando reemplazando la dirección ssh por la dirección HTTPS del dropdown `clone` (en este caso sería `https://github.com/ejemplo/tp-git`).
 
 En ese caso se nos solicitará ingresar el usuario (presionar enter) y contraseña (en este momento se puede pegar el PAT a la terminal presionando `ctrl + shift + v` - NO se imprimirá en pantalla la contraseña, hay que confiar y presionar enter e intentar de nuevo si no funcionó).
 
