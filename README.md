@@ -57,7 +57,8 @@ $ git config --global user.email <su email>
 
 Pasando el parámetro `--global` aplicamos la configuración para nuestro usuario, con lo cual quedará configurado con estos parámetros para todos los repos nuevos que creemos.
 
-:warning: En las computadoras de los laboratorios, pueden correr estos comandos sin la opción --global cuando estén parados dentro del clon de su repo (más adelante) para que no quede configurado su nombre y mail para el resto de los estudiantes que usen la PC.
+> [!WARNING]
+> En las computadoras de los laboratorios, pueden correr estos comandos sin la opción --global cuando estén parados dentro del clon de su repo (más adelante) para que no quede configurado su nombre y mail para el resto de los estudiantes que usen la PC.
 
 <h2 id="cloning">Clonando el repo</h2>
 
@@ -92,8 +93,9 @@ Para mayor seguridad, pueden dar una expiración de un día al PAT de manera que
 
 Terminadas las configuraciones, seleccionamos `Generate token` para generar el PAT.
 
-**:warning: sólo se mostrará el PAT generado una vez**
-así que este es el momento de guardarlo en algún lugar accesible pero seguro.
+> [!WARNING]
+> **:warning: sólo se mostrará el PAT generado una vez**
+> así que este es el momento de guardarlo en algún lugar accesible pero seguro.
 
 ![alt text](img/PAT_permisos.png)
 
