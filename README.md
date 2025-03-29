@@ -25,24 +25,13 @@ Debido a su popularidad, se dispone de una cantidad enorme de tutoriales y guía
 
 Supondremos a lo largo del taller una instalación de Linux, de tipo Ubuntu/Debian. Si instalaste alguna distribución basado en otro sistema (Arch, Fedora), entonces entendemos que _sabes de qué va la cosa_. Si sos usuario/a de Windows, existe una herramienta llamada WSL que nos permite contar con una instalación y consola de Linux que pueden utilizar para los trabajos de la materia, les dejamos un link con instrucciones básicas de instalación y uso: https://learn.microsoft.com/es-es/windows/wsl/install. Desde la materia les recomendamos fuertemente tomar la oportunidad para procurar una instalación de Linux; pueden acercarse durante los laboratorios si tienen algún problema creando el dual boot.
 
-La estructura de este trabajo práctico es la siguiente:
+El listado de temas que vamos a explorar abarca los siguientes:
 
-- [Trabajo Práctico 0 - Git](#trabajo-práctico-0---git)
-  - [Introducción](#introducción)
-    - [Configurando acceso HTTPS](#configurando-acceso-https)
-    - [Clonando el repositorio](#clonando-el-repositorio)
-  - [Ejercicio 1: Crear una branch](#ejercicio-1-crear-una-branch)
-    - [Branches (ramas)](#branches-ramas)
-    - [Ejercicio](#ejercicio)
-  - [Ejercicio 2: Modificar un archivo y crear un commit](#ejercicio-2-modificar-un-archivo-y-crear-un-commit)
-  - [Ejercicio 3: crear un Pull Request con los cambios y mergear a main](#ejercicio-3-crear-un-pull-request-con-los-cambios-y-mergear-a-main)
-    - [Pull requests](#pull-requests)
-  - [Como hacer consultas de TP](#como-hacer-consultas-de-tp)
-    - [Foro de consultas en discord](#foro-de-consultas-en-discord)
-    - [Issue tracker en github](#issue-tracker-en-github)
-  - [Gists](#gists)
-  - [Ejercicio 4 (opcional): ejercitar issues y gists](#ejercicio-4-opcional-ejercitar-issues-y-gists)
-
+- [Instalación y configuración](#installation)
+- [Forkeando el repo](#forking)
+- [Clonando el repo](#cloning)
+- [Aplicar cambios locales al repositorio remoto](#push)
+- [Referencias](#ref)
 
 <h2 id="installation">Instalación y configuración</h2>
 
@@ -77,13 +66,13 @@ Con git instalado podemos clonar el repositorio del TP a su PC. De esta manera, 
 
 Hay tres formas de clonar un repositorio:
 
-- Utilizando la url que comienza con *https://github.com/*
+- Utilizando la url que comienza con *https://git.exactas.uba.ar/*
 - Por SSH
 - Por Github CLI
 
 Si clonamos utilizando la primera opción, tendremos que autenticarnos con usuario y Personal Access Token (su configuración se explica en el próximo apartado) cada vez que hagamos alguna operación con el servidor remoto desde nuestra PC. Esta es la opción más segura en computadoras compartidas, pero se torna molesta rápidamente. Nuestras recomendaciones son las siguientes:
 
-- **En su computadora personal**, configurar un acceso por _SSH_ que creemos es lo más sencillo y cómodo (existen otras opciones como configurar un administrador de credenciales). Para configurar una clave ssh pueden seguir los pasos que están en el siguiente [link](https://docs.github.com/en/authentication/connecting-to-github-with-ssh). Los pasos claves son "Generate an SSH key pair" y "Add an SSH key to your GitLab account". 
+- **En su computadora personal**, configurar un acceso por _SSH_ que creemos es lo más sencillo y cómodo (existen otras opciones como configurar un administrador de credenciales). Para configurar una clave ssh pueden seguir los pasos que están en el siguiente [link](https://git.exactas.uba.ar/help/ssh/README). Los pasos claves son "Generate an SSH key pair" y "Add an SSH key to your GitLab account". 
 - **En las computadoras de los laboratorios**, donde varias personas utilizan el mismo usuario y posiblemente ustedes cambien de computadoras entre clases, recomendamos configurar acceso mediante HTTPS. Si realmente desean utilizar SSH es posible [configurar múltiples claves](https://stackoverflow.com/questions/2419566/best-way-to-use-multiple-ssh-private-keys-on-one-client/38454037#38454037) para el mismo sitio, pero tengan en cuenta que tendrán que hacerlo en cada computadora que quieran usar, y que **deben** asociar una contraseña a la clave para evitar que otros usuarios realicen operaciones en su nombre.
 
 ### Configurando acceso HTTPS
@@ -118,19 +107,19 @@ Y ahora podemos clonar el repositorio desde la línea de comandos.
 
 ### Clonando el repositorio
 
-Una vez configurado nuestro PAT o clave ssh (se puede [probar la clave ssh](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)!) vamos a usar la dirección del dropdown `clone` correspondiente al tipo de acceso que elegimos. Por ejemplo, si estamos usando SSH, usaremos la dirección que comienza con **git@github.com** para clonar el repositorio:
+Una vez configurado nuestro PAT o clave ssh (se puede [probar la clave ssh](https://git.exactas.uba.ar/help/ssh/README#verify-that-you-can-connect)!) vamos a usar la dirección del dropdown `clone` correspondiente al tipo de acceso que elegimos. Por ejemplo, si estamos usando SSH, usaremos la dirección que comienza con **git@git.exactas.uba.ar** para clonar el repositorio:
 
 ![Dirección SSH del repo](img/clone-with-ssh.png)
 
-Si quisieramos clonar un repositorio con dirección SSH: **git@github.com:ejemplo/tp-git**: abrimos una terminal, hacemos `cd` al directorio en el cual querramos guardar la copia local del repositorio y ejecutamos
+Si quisieramos clonar un repositorio con dirección SSH: **git@git.exactas.uba.ar:ejemplo/tp-git**: abrimos una terminal, hacemos `cd` al directorio en el cual querramos guardar la copia local del repositorio y ejecutamos
 
 ```shell
-$ git clone git@github.com:ejemplo/tp-git
+$ git clone git@git.exactas.uba.ar:ejemplo/tp-git
 ```
 
 Al usar ssh, la autenticación es automática.
 
-De elegir usar HTTPS, corremos el mismo comando reemplazando la dirección ssh por la dirección HTTPS del dropdown `clone` (en este caso sería `https://github.com/ejemplo/tp-git`).
+De elegir usar HTTPS, corremos el mismo comando reemplazando la dirección ssh por la dirección HTTPS del dropdown `clone` (en este caso sería `https://git.exactas.uba.ar/ejemplo/tp-git`).
 
 En ese caso se nos solicitará ingresar el usuario (presionar enter) y contraseña (en este momento se puede pegar el PAT a la terminal presionando `ctrl + shift + v` - NO se imprimirá en pantalla la contraseña, hay que confiar y presionar enter e intentar de nuevo si no funcionó).
 
@@ -147,53 +136,40 @@ Receiving objects: 100% (24/24), 303.16 KiB | 192.00 KiB/s, done.
 
 y aparecerá un subdirectorio **tp-git**.
 
-Les recomendamos usar el editor de texto VSCode [vscode](https://code.visualstudio.com/) en el que pueden descargar las siguientes dos extensiones que son utiles para manejar repositorios de git:
-
-[gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
-[git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
-
-Pueden instalarlas de dos maneras:
+Les recomendamos usar el editor de texto VSCode [vscode](https://code.visualstudio.com/) en el que pueden descargar varias extensiones utiles manejar repositorios de git.
+Nostros recomendamos [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) la cual pueden instalar de dos maneras:
 
 1. Desde el marketplace
 2. Haciendo Ctrl + P (Quick Open) y luego:
 
 ```shell
 ext install mhutchie.git-graph
-ext install eamodio.gitlens
 ```
 
 Para acceder al gráfico de git:
 
-![git-graph](img/git-graph.png)
+![Menu git](img/git-graph.png)
 
 ![git-graph](img/git-graph-2.png)
 
 <h3 id="push">Aplicar cambios locales al repositorio remoto</h3>
 
-Cualquier modificación que realicemos en el directorio solo afectará el estado del repositorio local (que se encuentra alojado en el directorio oculto **.git**). Cuando estemos listos para reflejar los cambios en el servidor remoto, realizaremos una serie de pasos:
+Cualquier modificación que realicemos en el directorio solo afectará el estado del repositorio local (que se encuentra alojado en el directorio oculto **.git**). Más adelante veremos como reflejar los cambios en el servidor remoto mediante la acción `push`.
 
-- :pen_fountain: **Completen con sus datos el archivo datos_estudiante.txt** así tenemos una modificación para versionar.
+Procuren siempre realizar un `pull` del repositorio antes de sentarse a trabajar. 
+La acción pull hace que **el repositorio local se actualice con las modificaciones que haya en el remoto**. 
 
-En primer lugar debemos seleccionar los archivos modificados/agregados que pretendemos subir. Se pueden seleccionar todos clickeando en el botón que indica la imagen, o seleccionar manualmente cada uno utilizando los botones `+` individuales a la derecha de cada archivo. En su caso el único archivo a versionar será datos_estudiante.txt
+Si alguien más realizó un push al repositorio remoto luego de la última vez que hicieron pull, es posible que aparezcan conflictos entre los cambios remotos y sus cambios locales. En la próxima sección dejamos algunas referencias de material complementario para que puedan profundizar cuando lo necesiten y resolver situaciones no cubiertas en esta guía.
 
-![Stage changes](img/stage.png)
-
-Luego debemos realizar un _commit_ de los cambios realizados desde la última versión guardada del repositorio (el _commit_ anterior). Todo _commit_ tiene asociado un _mensaje_ que describe brevemente las modificaciones que están siendo aplicadas. En este caso elegimos el mensaje `"datos completados"`.
-
-![Commit changes](img/commit.png)
-
-Escrito el mensaje, podemos **apretar el símbolo de tilde** :white_check_mark: para grabar el _commit_.
-
-Así nuestros cambios han sido registrados en un commit *local* pero aún no se han aplicado en el repositorio _remoto_. 
-Se pueden realizar múltiples commits locales si se quieren ir estableciendo puntos en los que el desarrollo es estable antes de seguir avanzando (esto también facilita que los mensajes de commit sean descriptivos), de forma que si algún cambio introduce errores sea fácil deshacerlo (git provee herramientas para comparar y deshacer commits, entre muchas otras operaciones).
-
-Finalmente hay que realizar un `push` para que **todos los commits locales pendientes impacten en el repositorio remoto**.
-
-![Push commits](img/push.png)
-
-Todos estos pasos pueden realizarse desde la consola de comandos en lugar de la GUI de VSCode, siéntanse libres de utilizar el método que les resulte más cómodo.
-
-Procuren siempre realizar un `pull` del repositorio antes de sentarse a trabajar, de ese modo **el repositorio local se actualizará con las modificaciones que haya en el remoto**. De todos modos, si alguien más realizó un push al repositorio remoto luego de la última vez que hicieron pull, es posible que aparezcan conflictos entre los cambios remotos y sus cambios locales. En la próxima sección dejamos algunas referencias de material complementario para que puedan profundizar cuando lo necesiten.
+> [!NOTE]
+> Otra extensión util que pueden revisar para realizar acciones de git más complejas de manera visual es [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens).
+>
+> Pueden instalarla
+> 1. Desde el marketplace buscando `Gitlens`
+> 2. Haciendo Ctrl + P (Quick Open) y luego:
+> ```shell
+> ext install eamodio.gitlens
+> ```
 
 <h2 id="ref">Referencias</h3>
 
@@ -249,10 +225,36 @@ Cuando ya esten parados en la branch nueva, vayan a la carpeta donde está nuest
 > Los archivos .md contienen markdown de Github. Esto es lo que nos permite mostrar imágenes y formato bello en la interfaz web de github. Siéntanse libres de experimentar con Markdown en su archivo de presentación! Pueden encontrar [la documentación aquí](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
 Hechos los cambios pertinentes, debemos realizar un commit para versionar los cambios.
-Para ello:
+Esto se puede realizar desde la terminal o desde su IDE (durante esta guía usamos Visual Studio Code).
+Sientanse lbres de utilizar el método que les resulte más cómodo.
+
+### Versionar cambios mediante terminal
 1. Añadimos los archivos con cambios a versionar al commit con el comando `git add presentacion.md` (también podemos usar `git add .` para agregar todos los archivos con cambios en la carpeta actual, identificada por `.`, al commit) 
 2. Fijamos el commit con el comando `git commit -m "Completo presentacion.md"`. Se puede usar otros mensajes completando una frase distinta (entre comillas) luego de la flag `-m`.
 3. Finalmente, **subimos el cambio al repositorio remoto** con el comando `git push`.
+
+Si ahora ingresan a la página web de su repositorio, y navegan a la branch nueva (mismo panel donde crearon la branch anteriormente) deberíán poder ver su nuevo commit.
+
+![alt text](img/commit-web.png)
+
+### Versionar cambios mediante IDE
+
+En primer lugar debemos seleccionar los archivos modificados/agregados que pretendemos subir. Se pueden seleccionar todos clickeando en el botón que indica la imagen, o seleccionar manualmente cada uno utilizando los botones `+` individuales a la derecha de cada archivo. En su caso el único archivo a versionar será `presentacion.md`
+
+![Stage changes](img/stage.png)
+
+Luego debemos realizar un _commit_ de los cambios realizados desde la última versión guardada del repositorio (el _commit_ anterior). Todo _commit_ tiene asociado un _mensaje_ que describe brevemente las modificaciones que están siendo aplicadas. En este caso elegimos el mensaje `"datos completados"`.
+
+![Commit changes](img/commit.png)
+
+Escrito el mensaje, podemos **apretar el símbolo de tilde** :white_check_mark: para grabar el _commit_.
+
+Así nuestros cambios han sido registrados en un commit *local* pero aún no se han aplicado en el repositorio _remoto_. 
+Se pueden realizar múltiples commits locales si se quieren ir estableciendo puntos en los que el desarrollo es estable antes de seguir avanzando (esto también facilita que los mensajes de commit sean descriptivos), de forma que si algún cambio introduce errores sea fácil deshacerlo (git provee herramientas para comparar y deshacer commits, entre muchas otras operaciones).
+
+Finalmente hay que realizar un `push` para que **todos los commits locales pendientes impacten en el repositorio remoto**.
+
+![Push commits](img/push.png)
 
 Si ahora ingresan a la página web de su repositorio, y navegan a la branch nueva (mismo panel donde crearon la branch anteriormente) deberíán poder ver su nuevo commit.
 
@@ -284,7 +286,7 @@ Procederemos a crear una pull request para nuestra branch y agregar como reviewe
 
 Para saber qué docente está asignado como reviewer a su TP, contamos con el siguiente sistema de avanzada:
 
-Si el último número de su Libreta Universitaria (el número a la izquierda del `/`) termina en:
+Si el primer número de su Libreta Universitaria (entes del /) termina en:
 1. Asignar a @afernandezortuzar como reviewer
 2. Asignar a @brunocompu
 3. @franciscod
@@ -296,7 +298,7 @@ Si el último número de su Libreta Universitaria (el número a la izquierda del
 9. @stefmr
 10. (Si el número termina en 0) @TomasDeLosSantos
 
-(Sí, algunos docentes zafaron de la corrección del TP en esta ocasión :laughing:)
+(Sí, algunos docentes zafaron de la corrección del parcial en esta ocasión :laughing:)
 
 Hecho todo esto, podemos **Crear la Pull Request** con el botón verde que se encuentra debajo de la caja de descripción.
 
