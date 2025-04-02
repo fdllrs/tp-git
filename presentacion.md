@@ -1,6 +1,4 @@
 # Presentación
-Hola! Mi nombre es [COMPLETAR].
+Hola! Mi nombre es Facundo.
 
-En mi tiempo libre me gusta...
-
-Mi instrucción favorita del manual de intel es...
+:heavy_exclamation_mark:	:trollface: :heavy_exclamation_mark:
